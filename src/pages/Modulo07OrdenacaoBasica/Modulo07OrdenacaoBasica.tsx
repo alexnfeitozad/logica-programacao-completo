@@ -91,45 +91,79 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
         </div>
         <h1>Ordenação Básica (Bubble & Selection Sort)</h1>
         <p className="subtitle">
-          Visualizador gráfico com barras interativas, rastreamento de comparações e trocas passo a passo.
+          Como os primeiros algoritmos de ordenação da história funcionam (e por que você quase nunca deve usá-los).
         </p>
       </div>
 
-      
-
-      
-
-      
-
-      
-
-      
-    
-        
-      {/* SEÇÃO: 📖 Teoria */}
+      {/* SEÇÃO: 📖 Teoria Completa */}
       <section className="module-section">
-        <h2 className="section-title">📖 Teoria</h2>
-        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <h2 className="section-title">📖 Teoria Completa & Padrões Visuais</h2>
+        
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          
+          {/* Tópico 1 */}
           <div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem' }}>
-              Por que Bubble Sort é ineficiente para grandes volumes?
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              🫧 1. O Famoso Bubble Sort (O Algoritmo da Bolha)
             </h3>
-            <p style={{ color: '#475569', lineHeight: 1.6 }}>
-              No Bubble Sort, para cada um dos N elementos, você percorre novamente quase todos os outros N elementos.
-              Isso gera aproximadamente <code>N × N = N²</code> comparações. Para 100.000 itens, são necessários 10 bilhões de passos.
-            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+              <div>
+                <p style={{ color: '#475569', lineHeight: 1.6, marginBottom: '1rem' }}>
+                  Imagine bolhas de ar subindo na água: as bolhas grandes sobem mais rápido. O Bubble Sort compara vizinhos (2 a 2). Se o da esquerda for maior que o da direita, eles trocam de lugar (Swap).
+                </p>
+                <p style={{ color: '#475569', lineHeight: 1.6 }}>
+                  Isso se repete até o maior número "borbulhar" até o final do array. Por ter dois loops <code>for</code> aninhados varrendo os mesmos elementos repetidas vezes, a complexidade é trágica: <strong>O(N²)</strong>.
+                </p>
+              </div>
+              <div>
+                <img 
+                  src="https://placehold.co/600x400/fef2f2/991b1b?text=Bubble+Sort%5Cn%5Cn%5B+5+%5D+%5B+1+%5D+%E2%86%92+Troca%21%5Cn%5B+1+%5D+%5B+5+%5D+%E2%86%92+Ok%21%5Cn%5CnO+maior+vai+pro+final" 
+                  alt="Esquema Bubble Sort" 
+                  style={{ width: '100%', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
+                />
+              </div>
+            </div>
           </div>
+
+          <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0' }} />
+
+          {/* Tópico 2 */}
+          <div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              🎯 2. Selection Sort (O Caçador do Menor)
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+              <div style={{ order: 2 }}>
+                <p style={{ color: '#475569', lineHeight: 1.6, marginBottom: '1rem' }}>
+                  Em vez de trocar vizinhos toda hora, o Selection Sort percorre a lista inteira apenas caçando o <strong>MENOR</strong> número. Quando acha, ele pega esse número e joga lá para o primeiro espaço disponível.
+                </p>
+                <p style={{ color: '#475569', lineHeight: 1.6 }}>
+                  Ele faz BEM menos Trocas (Swaps) que o Bubble Sort, o que poupa memória RAM. Mas ele continua fazendo o mesmo número absurdo de Comparações, então também é <strong>O(N²)</strong>.
+                </p>
+              </div>
+              <div style={{ order: 1 }}>
+                <img 
+                  src="https://placehold.co/600x400/fef3c7/b45309?text=Selection+Sort%5Cn%5Cn%5B3%5D+%5B5%5D+%5B1%5D+%5B2%5D%5CnMenor+%C3%A9+1%21%5Cn%5B1%5D+%5B5%5D+%5B3%5D+%5B2%5D" 
+                  alt="Esquema Selection Sort" 
+                  style={{ width: '100%', borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
         
-        
       {/* SEÇÃO: 💻 Exemplos Práticos */}
       <section className="module-section">
-        <h2 className="section-title">💻 Exemplos Práticos</h2>
+        <h2 className="section-title">💻 Como fazer no Código?</h2>
         <div className="glass-card">
           <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>
-            Bubble Sort com Otimização de Flag em TypeScript
+            Bubble Sort com Otimização "Flag" (TypeScript)
           </h3>
+          <p style={{ color: 'var(--neutral-500)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+            Existe um truque clássico: se o array já estiver ordenado no meio da bagunça, criamos um <code>swapped</code> que percebe que ninguém trocou, e damos um <code>break</code> parando o programa cedo.
+          </p>
           <pre>
             <code>{`export function bubbleSort(arr: number[]): number[] {
   const result = [...arr];
@@ -138,12 +172,12 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
   for (let i = 0; i < result.length; i++) {
     swapped = false;
     for (let j = 0; j < result.length - i - 1; j++) {
-      if (result[j] > result[j + 1]) {
-        [result[j], result[j + 1]] = [result[j + 1], result[j]];
+      if (result[j] > result[j + 1]) { // Se o esquerdo é maior que o direito
+        [result[j], result[j + 1]] = [result[j + 1], result[j]]; // Swap!
         swapped = true;
       }
     }
-    // Se nenhuma troca ocorreu nesta passada, o array já está ordenado!
+    // Se passamos a lista inteira e não houve NENHUMA troca, já está ordenado!
     if (!swapped) break;
   }
 
@@ -153,49 +187,55 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
         </div>
       </section>
         
-        
       {/* SEÇÃO: 🧪 Prática / Simulador */}
       <section className="module-section">
-        <h2 className="section-title">🧪 Prática / Simulador</h2>
+        <h2 className="section-title">🧪 Prática: O Laboratório Computacional</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          
           {/* Métricas */}
           <div className="grid-2">
-            <div className="stat-card">
-              <span className="stat-value">{comparisons}</span>
-              <span className="stat-label">Comparações Realizadas</span>
-              <span className="stat-detail">Elemento [j] vs [j+1]</span>
+            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span style={{ fontSize: '2.5rem', fontWeight: 900, color: '#334155', fontFamily: 'var(--font-mono)' }}>{comparisons}</span>
+              <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>Comparações (Ifs)</span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Quantas vezes o CPU olhou os números</span>
             </div>
-            <div className="stat-card">
-              <span className="stat-value" style={{ color: '#0d9488' }}>{swaps}</span>
-              <span className="stat-label">Trocas de Posição (Swaps)</span>
-              <span className="stat-detail">Inversões na memória</span>
+            <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '8px', border: '1px solid #bbf7d0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span style={{ fontSize: '2.5rem', fontWeight: 900, color: '#059669', fontFamily: 'var(--font-mono)' }}>{swaps}</span>
+              <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#047857' }}>Trocas na RAM (Swaps)</span>
+              <span style={{ fontSize: '0.75rem', color: '#10b981' }}>Quantas vezes mudamos a array</span>
             </div>
           </div>
 
           <div className="glass-card">
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-              <button onClick={shuffleArray} disabled={isSorting} className="btn btn-secondary">
-                🔀 Embaralhar Array
-              </button>
-              <button onClick={runBubbleSort} disabled={isSorting} className="btn btn-primary">
-                ▶ Iniciar Bubble Sort
-              </button>
-              <button onClick={runSelectionSort} disabled={isSorting} className="btn btn-success">
-                ▶ Iniciar Selection Sort
-              </button>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+              <div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>Simulador Gráfico de Ordenação</h3>
+                <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.2rem' }}>Veja como cada algoritmo varre o array de forma diferente.</p>
+              </div>
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <button onClick={shuffleArray} disabled={isSorting} className="btn btn-secondary btn-sm">
+                  🔀 Embaralhar
+                </button>
+                <button onClick={runBubbleSort} disabled={isSorting} className="btn btn-danger btn-sm">
+                  🫧 Start Bubble
+                </button>
+                <button onClick={runSelectionSort} disabled={isSorting} className="btn btn-primary btn-sm">
+                  🎯 Start Selection
+                </button>
+              </div>
             </div>
 
             {/* Visualizador Gráfico de Barras */}
             <div
               style={{
-                height: '240px',
+                height: '280px',
                 background: '#0f172a',
                 borderRadius: 'var(--radius-md)',
                 padding: '1.5rem 1rem 0.5rem',
                 display: 'flex',
                 alignItems: 'flex-end',
                 justifyContent: 'center',
-                gap: '0.85rem'
+                gap: '1rem'
               }}
             >
               {bars.map((val, idx) => {
@@ -205,8 +245,8 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
                     key={idx}
                     style={{
                       flex: 1,
-                      maxWidth: '48px',
-                      height: `${(val / 100) * 190}px`,
+                      maxWidth: '56px',
+                      height: \`\${(val / 100) * 220}px\`,
                       background: isComparing
                         ? 'linear-gradient(180deg, #f59e0b 0%, #d97706 100%)'
                         : 'linear-gradient(180deg, #10b981 0%, #059669 100%)',
@@ -214,13 +254,13 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
                       display: 'flex',
                       alignItems: 'flex-end',
                       justifyContent: 'center',
-                      paddingBottom: '0.4rem',
+                      paddingBottom: '0.5rem',
                       color: '#ffffff',
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.75rem',
+                      fontSize: '0.85rem',
                       fontWeight: 800,
-                      transition: 'height 0.1s ease, background 0.1s ease',
-                      boxShadow: isComparing ? '0 0 12px rgba(245, 158, 11, 0.8)' : 'none'
+                      transition: 'height 0.1s ease, background 0.05s ease',
+                      boxShadow: isComparing ? '0 0 16px rgba(245, 158, 11, 0.9)' : 'none'
                     }}
                   >
                     {val}
@@ -228,24 +268,25 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
                 );
               })}
             </div>
+            <p style={{ color: '#64748b', fontSize: '0.8rem', textAlign: 'center', marginTop: '1rem' }}>
+              * Repare como o Bubble faz MUITO MAIS trocas (swaps) que o Selection. No mundo real, gravar na RAM (fazer swap) é uma operação computacionalmente mais cara que apenas ler (fazer comparação).
+            </p>
           </div>
         </div>
       </section>
         
-        
       {/* SEÇÃO: 🛡️ Boas Práticas */}
       <section className="module-section">
-        <h2 className="section-title">🛡️ Boas Práticas</h2>
+        <h2 className="section-title">🛡️ Boas Práticas & Mercado</h2>
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <div className="alert alert-info">
+          <div className="alert alert-danger">
             <div>
-              <strong>Uso Didático:</strong> Embora não seja usado em produção para grandes volumes de dados, o Bubble Sort é a introdução perfeita para entender a mecânica de iteração e trocas em vetores de memória.
+              <strong>Nunca use em Produção:</strong> Apesar de geniais para fins didáticos (entender loops aninhados), Bubble Sort, Selection Sort e Insertion Sort <strong>nunca</strong> devem ser usados em código de produção real para listas grandes, pois seu desempenho cai ladeira abaixo (curva quadrática O(N²)) muito rapidamente. Linguagens modernas já embutem ordenadores <code>O(N log N)</code> nativos.
             </div>
           </div>
         </div>
       </section>
         
-      
-</div>
+    </div>
   );
 };

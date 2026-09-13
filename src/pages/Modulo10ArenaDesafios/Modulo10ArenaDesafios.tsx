@@ -146,7 +146,7 @@ export const Modulo10ArenaDesafios: React.FC = () => {
                   setSelectedChallenge(ch);
                   setTestResults(null);
                 }}
-                className={\`btn btn-sm \${selectedChallenge.id === ch.id ? 'btn-primary' : 'btn-secondary'}\`}
+                className={`btn btn-sm ${selectedChallenge.id === ch.id ? 'btn-primary' : 'btn-secondary'}`}
                 style={{ padding: '0.6rem 1.2rem', fontWeight: 700 }}
               >
                 {ch.title}

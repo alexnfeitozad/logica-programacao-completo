@@ -226,7 +226,7 @@ export const Modulo08OrdenacaoAvancada: React.FC = () => {
                   <h4 style={{ fontWeight: 900, color: '#92400e', fontSize: '1.2rem', margin: 0 }}>QuickSort (Pivot)</h4>
                 </div>
                 <div style={{ fontSize: '3.5rem', fontWeight: 900, color: '#d97706', fontFamily: 'var(--font-mono)', lineHeight: 1 }}>
-                  {quickDuration !== null ? \`\${quickDuration}\` : '---'}
+                  {quickDuration !== null ? quickDuration : '---'}
                   <span style={{ fontSize: '1.2rem', color: '#b45309', marginLeft: '0.2rem' }}>ms</span>
                 </div>
                 <div style={{ fontSize: '0.85rem', color: '#92400e', marginTop: '1rem', fontWeight: 600 }}>
@@ -239,7 +239,7 @@ export const Modulo08OrdenacaoAvancada: React.FC = () => {
                   <h4 style={{ fontWeight: 900, color: '#075985', fontSize: '1.2rem', margin: 0 }}>MergeSort (Split)</h4>
                 </div>
                 <div style={{ fontSize: '3.5rem', fontWeight: 900, color: '#0284c7', fontFamily: 'var(--font-mono)', lineHeight: 1 }}>
-                  {mergeDuration !== null ? \`\${mergeDuration}\` : '---'}
+                  {mergeDuration !== null ? mergeDuration : '---'}
                   <span style={{ fontSize: '1.2rem', color: '#0369a1', marginLeft: '0.2rem' }}>ms</span>
                 </div>
                 <div style={{ fontSize: '0.85rem', color: '#075985', marginTop: '1rem', fontWeight: 600 }}>

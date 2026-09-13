@@ -246,7 +246,7 @@ export const Modulo07OrdenacaoBasica: React.FC = () => {
                     style={{
                       flex: 1,
                       maxWidth: '56px',
-                      height: \`\${(val / 100) * 220}px\`,
+                      height: ((val / 100) * 220) + 'px',
                       background: isComparing
                         ? 'linear-gradient(180deg, #f59e0b 0%, #d97706 100%)'
                         : 'linear-gradient(180deg, #10b981 0%, #059669 100%)',

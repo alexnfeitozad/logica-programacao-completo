@@ -200,7 +200,7 @@ export const Modulo06Buscas: React.FC = () => {
                 </p>
 
                 <div style={{ fontSize: '3rem', fontWeight: 900, color: '#b91c1c', fontFamily: 'var(--font-mono)', lineHeight: 1 }}>
-                  {linearSteps !== null ? \`\${linearSteps}\` : '-'}
+                  {linearSteps !== null ? linearSteps : '-'}
                   <span style={{ fontSize: '1rem', fontWeight: 600, color: '#f87171', marginLeft: '0.5rem' }}>passos</span>
                 </div>
                 
@@ -221,7 +221,7 @@ export const Modulo06Buscas: React.FC = () => {
                 </p>
 
                 <div style={{ fontSize: '3rem', fontWeight: 900, color: '#15803d', fontFamily: 'var(--font-mono)', lineHeight: 1 }}>
-                  {binarySteps !== null ? \`\${binarySteps}\` : '-'}
+                  {binarySteps !== null ? binarySteps : '-'}
                   <span style={{ fontSize: '1rem', fontWeight: 600, color: '#4ade80', marginLeft: '0.5rem' }}>passos</span>
                 </div>
                 
